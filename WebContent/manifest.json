@@ -63,7 +63,8 @@
 	         		 "metadataUrlParams":{
 	         		 	"sap-client": "370"
 	         		 },	         		 
-					"useBatch": false					 	         		          		 
+					"user":"GGP-09936",
+					"password":"google"					 	         		          		 
 				}
 			}
 		},
