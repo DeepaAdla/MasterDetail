@@ -1,0 +1,136 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "com.liu.split",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"ach": "CA-UI5-FST",
+		"dataSources": {			
+			"SPK":{
+				"uri": "proxy/http/npggpdbsdev02.terbanggi.ggp:1080/sap/opu/odata/sap/ZPAS_SPK_SRV/",
+				"type": "OData",
+				"settings": {
+					 "odataVersion": "2.0"					 
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": "com.liu.split.view.App",
+		"dependencies": {
+			"minUI5Version": "1.30",
+			"libs": {
+				"sap.m": {
+					
+				}
+			}
+		},
+		"resourceRoots": {
+            "com.mitchbarry.controls": "./control"
+        },
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.liu.split.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "SPK",				
+				"settings":{
+					"serviceUrlParams": {
+	        		 	"sap-client": "370"
+	         		 },
+	         		 "metadataUrlParams":{
+	         		 	"sap-client": "370"
+	         		 },	         		 
+					"useBatch": false					 	         		          		 
+				}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "com.liu.split.view",
+				"controlId": "app",				
+				"transition": "slide",
+				"controlAggregation": "detailPages",
+				"bypassed":{
+					"target": [
+						"notFound",
+						"master"
+					]
+				}
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "master",
+					"target": [
+						"master"
+						
+					]
+				},
+				{
+					"pattern":"spk/{bukrs}/{spkId}",
+					"name":"spkhdr",
+					"target":[
+						"master",
+						"detail"
+					]
+				},
+				{
+					"pattern":"spkAkt/{bukrs}/{spkId}/{itemno}",
+					"name":"spkAkt",
+					"target":[
+						"master",
+						"spkAkt"
+					]
+				}				
+				
+			],
+			"targets": {				
+				"notFound":{
+					"viewName":"NotFound",
+					"transition":"show"
+				},
+				"master":{
+					"viewPath": "com.liu.split.view",
+					"viewName": "Master",
+					"controlAggregation": "masterPages",
+					"viewLevel": 0
+				},
+				"detail":{
+					"viewName": "Detail",
+					"controlAggregation": "detailPages",
+					"viewLevel": 1
+				},
+				"spkAkt":{
+					"viewName": "AktDetail",
+					"controlAggregation": "detailPages",
+					"viewLevel": 2
+				}				
+			}
+		}
+	}
+}

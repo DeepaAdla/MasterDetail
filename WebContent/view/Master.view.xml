@@ -1,0 +1,42 @@
+<View
+	xmlns="sap.m"
+	xmlns:layout="sap.ui.layout"
+	controllerName="com.liu.split.controller.Master"
+	xmlns:x="com.mitchbarry.controls">
+	<Page
+		title="SPK List">
+		<PullToRefresh
+			id="pullToRefresh"
+			visible="{device>/support/touch}"
+			refresh="onRefresh" />
+		<List id="listSPK" 
+				items="{/HeaderSet}"
+				growing = "true"
+				mode="{= ${device>/system/phone} ? 'None' : 'SingleSelectMaster'}"
+				selectionChange="onSelectionChange">
+			<headerToolbar>
+				<Toolbar>
+					<SearchField
+							id="searchField"						
+							tooltip="Search"
+							width="100%"
+							liveChange="onSearch">
+					</SearchField>
+				</Toolbar>
+			</headerToolbar>
+			<items>
+				<StandardListItem title="{Spkid}" 
+					type="Active"					
+					press="onSelectionChange"/>
+			</items>
+		</List>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<x:ModelInspector 
+				  	icon="sap-icon://source-code"
+					text="Inspect Model" />				
+			</Toolbar>
+		</footer>
+	</Page>
+</View>

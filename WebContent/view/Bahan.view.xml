@@ -1,0 +1,19 @@
+<mvc:View
+	controllerName="com.liu.split.controller.Bahan"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Table id="BahanTable"
+			items="{Bahan}"
+			itemPress="onItemPressed">		
+		<columns>
+			<Column><Text text="Bahan Code"/></Column>			
+		</columns>
+		<items>
+			<ColumnListItem type="Active">
+				<cells>
+					<Text text="{Bhncode}"/>					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</mvc:View>

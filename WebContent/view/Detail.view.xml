@@ -1,0 +1,66 @@
+<mvc:View
+	controllerName="com.liu.split.controller.Detail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	busyIndicatorDelay="0">
+	<Page
+		id="employeePage"
+		title="SPK Detail"				
+		class="sapUiResponsiveContentPadding"
+		navButtonPress="onNavBack"
+		showNavButton="{device>/system/phone}">
+		<content>
+			<Panel
+				id="employeePanel"
+				width="auto"
+				class="sapUiResponsiveMargin sapUiNoContentPadding">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{Spkid}" level="H2"/>																	
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<f:SimpleForm
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout"
+						labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4"
+						columnsL="1" columnsM="1">
+						<f:content>
+							<Label text="Remark" />
+							<Text text="{Remark}" />
+							<Label text="No Reservasi" />
+							<Text text="{ReservNo}" />							
+						</f:content>
+					</f:SimpleForm>
+				</content>
+			</Panel>
+			<Panel
+				id="AktPanel"
+				width="auto"
+				class="sapUiResponsiveMargin sapUiNoContentPadding">
+				<content>
+					<Table id="aktTable"
+						   items="{Aktivitas}"								
+						   itemPress="onItemPressed">						
+						<columns>
+							<Column><Text text="Lokasi"/></Column>
+							<Column><Text text="Status Lokasi"/></Column>
+							<Column><Text text="Kode Aktivitas"/></Column>														
+						</columns>
+						<items>
+							<ColumnListItem type="Active">
+								<cells>
+									<Text text="{Lokasi}"/>
+									<Text text="{Stalks}"/>
+									<Text text="{Akcode}"/>									
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Panel>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,30 @@
+<mvc:View
+	controllerName="com.liu.split.controller.AktDetail"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form"
+	busyIndicatorDelay="0">
+	<Page
+		title="{Spkid} - {Itemno}"
+		id="AktDetailPage"
+		showNavButton="true"
+		navButtonPress="onNavBack"
+		class="sapUiResponsiveContentPadding">
+		<content>
+			<IconTabBar
+				id="iconTabBarAkt"
+				class="sapUiResponsiveContentPadding"				
+				select="onTabSelect"
+				selectedKey="{view>/selectedTabKey}">
+				<items>
+					<IconTabFilter id="BahanTab" text="Bahan" key="Info">
+						<mvc:XMLView viewName="com.liu.split.view.Bahan"></mvc:XMLView>
+					</IconTabFilter>
+					<IconTabFilter id="UnitTab" text="Unit" key="Projects">
+						<mvc:XMLView viewName="com.liu.split.view.Unit"></mvc:XMLView>
+					</IconTabFilter>					
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>
